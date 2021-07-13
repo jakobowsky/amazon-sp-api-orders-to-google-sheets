@@ -71,13 +71,13 @@ class AmazonScript:
 
     def get_orders_data_and_append_to_gs(self, google_sheets: GoogleSheets) -> None:
         try:
-            order_data = self.get_order_from_sp_api()
+            order_data = self.get_orders_from_sp_api()
             ready_rows = [list(asdict(row).values()) for row in order_data]
             google_sheets.append_rows(ready_rows)
         except SellingApiException as e:
             print(f"Error: {e}")
 
-    def get_order_from_sp_api(self) -> List[AmazonOrder]:
+    def get_orders_from_sp_api(self) -> List[AmazonOrder]:
         client_config = dict(
             refresh_token=const.REFRESH_TOKEN,
             lwa_app_id=const.LWA_APP_ID,
