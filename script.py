@@ -71,8 +71,8 @@ class AmazonScript:
 
     def get_orders_data_and_append_to_gs(self, google_sheets: GoogleSheets) -> None:
         try:
-            asin_data = self.get_order_from_sp_api()
-            ready_rows = [list(asdict(row).values()) for row in asin_data]
+            order_data = self.get_order_from_sp_api()
+            ready_rows = [list(asdict(row).values()) for row in order_data]
             google_sheets.append_rows(ready_rows)
         except SellingApiException as e:
             print(f"Error: {e}")
