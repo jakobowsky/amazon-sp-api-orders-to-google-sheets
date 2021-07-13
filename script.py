@@ -17,7 +17,6 @@ class GoogleSheets:
         self.worksheet_name = worksheet_name
         self.scope = [
             "https://spreadsheets.google.com/feeds",
-            "https://www.googleapis.com/auth/drive",
         ]
         self.sheet_object = self._get_sheet_object()
 
